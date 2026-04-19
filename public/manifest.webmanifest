@@ -1,0 +1,16 @@
+{
+  "name": "A Little Unlimited Estate Sale Services",
+  "short_name": "A Little Unlimited",
+  "description": "Chicago's specialist in complex, high-value estate sales for attorneys, fiduciaries, and families.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0F0F",
+  "theme_color": "#0F0F0F",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
