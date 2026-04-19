@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Past Sales — A Little Unlimited Estate Sale Services Chicago</title>
+  <meta name="description" content="Notable estates and items handled by A Little Unlimited — fine jewelry, rare coins, Chinese antiques, vintage couture, art glass, and luxury collectibles. Chicago and North Shore specialist." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+
+    /* ── Portfolio-specific styles ── */
+
+    .portfolio-intro {
+      background: var(--white);
+      padding: 80px 0;
+    }
+    .portfolio-intro-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      background: var(--white);
+      border-bottom: 1px solid rgba(184,153,44,0.15);
+      padding: 0;
+      position: sticky;
+      top: 80px;
+      z-index: 50;
+    }
+    .filter-inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-inner::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 18px 28px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .filter-btn:hover { color: var(--charcoal); }
+    .filter-btn.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* Sale entries (grouped by estate) */
+    .sales-list {
+      background: var(--off-white);
+      padding: 80px 0;
+    }
+
+    .sale-entry {
+      margin-bottom: 100px;
+      padding-bottom: 100px;
+      border-bottom: 1px solid rgba(184,153,44,0.12);
+    }
+    .sale-entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .sale-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: baseline;
+      margin-bottom: 48px;
+    }
+    .sale-header h2 { font-size: 1.6rem; }
+    .sale-meta {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+    .sale-meta .location { color: var(--gold); margin-right: 16px; }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      gap: 3px;
+      margin-bottom: 40px;
+    }
+    .photo-grid.layout-1 { grid-template-columns: 1fr; }
+    .photo-grid.layout-2 { grid-template-columns: 1fr 1fr; }
+    .photo-grid.layout-3 { grid-template-columns: 2fr 1fr; }
+    .photo-grid.layout-3b { grid-template-columns: 1fr 1fr 1fr; }
+    .photo-grid.layout-4 {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+    .photo-grid.layout-hero {
+      grid-template-columns: 3fr 2fr;
+    }
+    .photo-grid.layout-mosaic {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+    }
+    .photo-grid.layout-mosaic .photo-item:first-child {
+      grid-column: span 2;
+    }
+
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+      cursor: pointer;
+    }
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, opacity 0.3s;
+      opacity: 0.92;
+    }
+    .photo-item:hover img {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+    .photo-item.tall { min-height: 480px; }
+    .photo-item.medium { min-height: 320px; }
+    .photo-item.short { min-height: 220px; }
+
+    /* Photo caption overlay */
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 20px 18px;
+      background: linear-gradient(transparent, rgba(15,15,15,0.85));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-item:hover .photo-caption { opacity: 1; }
+    .photo-caption p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.9);
+      margin: 0;
+      line-height: 1.4;
+    }
+    .photo-caption .category-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    /* Placeholder for estates without photos yet */
+    .photo-placeholder {
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      border: 1px dashed rgba(184,153,44,0.2);
+    }
+    .photo-placeholder p {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* Sale description */
+    .sale-description {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .sale-narrative {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.75;
+      font-style: italic;
+    }
+    .sale-details { }
+    .detail-row {
+      display: flex;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(184,153,44,0.1);
+      font-size: 0.85rem;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-label {
+      flex-shrink: 0;
+      width: 120px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-top: 2px;
+    }
+    .detail-value { color: var(--mid); }
+
+    /* Category tags on sale */
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .pill {
+      padding: 4px 12px;
+      background: var(--gold-pale);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(10,10,10,0.96);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 32px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    /* CTA band */
+    .portfolio-cta {
+      background: var(--dark);
+      padding: 100px 0;
+      text-align: center;
+    }
+    .portfolio-cta h2 { color: var(--white); margin-bottom: 16px; }
+    .portfolio-cta p { color: rgba(255,255,255,0.55); max-width: 520px; margin: 0 auto 40px; font-size:0.95rem; }
+
+    @media (max-width: 900px) {
+      .portfolio-intro-inner { grid-template-columns: 1fr; gap: 48px; }
+      .sale-header { grid-template-columns: 1fr; gap: 8px; }
+      .photo-grid.layout-3,
+      .photo-grid.layout-3b,
+      .photo-grid.layout-4,
+      .photo-grid.layout-hero,
+      .photo-grid.layout-mosaic { grid-template-columns: 1fr 1fr; }
+      .photo-grid.layout-mosaic .photo-item:first-child { grid-column: span 2; }
+      .sale-description { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .photo-grid { grid-template-columns: 1fr !important; }
+      .photo-grid .photo-item:first-child { grid-column: span 1 !important; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">A Little Unlimited<span>Estate Sale Services</span></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="specialties.html">Specialties</a></li>
+      <li><a href="professionals.html">For Professionals</a></li>
+      <li><a href="portfolio.html">Past Sales</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <span class="eyebrow">A Record of the Work</span>
+      <div class="rule"></div>
+      <h1>Past Sales &amp;<br>Notable Collections</h1>
+      <p>The best argument for expertise is the work itself. Selected items and estates from our portfolio — each one handled with the knowledge it deserved.</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="portfolio-intro">
+    <div class="container">
+      <div class="portfolio-intro-inner">
+        <div>
+          <span class="eyebrow">Why This Matters</span>
+          <div class="rule"></div>
+          <h2>Every Item Here<br>Required More Than<br>a Price Tag</h2>
+        </div>
+        <div>
+          <p style="color:var(--slate); font-size:0.95rem; line-height:1.85;">The estates we handle contain things that most estate sale companies are not equipped to price, present, or sell correctly. What you see here represents a fraction of what we have handled — pieces of jewelry, coins, porcelain, and couture that required research, expertise, and the right buyer to realize their actual value.</p>
+          <p style="color:var(--slate); font-size:0.95rem; line-height:1.85;">If you are a professional evaluating whether we are the right firm for a complex estate, this page is for you. If you are a family wondering whether your estate qualifies, it is likely to give you a sense of the answer.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-inner">
+        <button class="filter-btn active" data-filter="all">All Estates</button>
+        <button class="filter-btn" data-filter="jewelry">Fine Jewelry</button>
+        <button class="filter-btn" data-filter="coins">Rare Coins</button>
+        <button class="filter-btn" data-filter="chinese">Chinese Antiques</button>
+        <button class="filter-btn" data-filter="couture">Couture</button>
+        <button class="filter-btn" data-filter="artglass">Art Glass</button>
+        <button class="filter-btn" data-filter="furnishings">Furnishings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALES LIST -->
+  <div class="sales-list">
+    <div class="container">
+
+      <!-- ═══════════════════════════════════════════════
+           SALE 1 — Example: North Shore Jewelry & Coins
+           Replace photo src values with your actual image paths.
+           Current ALU site images referenced where matching.
+      ════════════════════════════════════════════════ -->
+      <div class="sale-entry" data-categories="jewelry coins">
+        <div class="sale-header">
+          <div>
+            <span class="eyebrow">Glenview, IL</span>
+            <h2>North Shore Estate — Fine Jewelry &amp; Numismatic Collection</h2>
+          </div>
+          <div class="sale-meta">
+            <span class="location">Glenview</span>
+            <span>2023</span>
+          </div>
+        </div>
+
+        <!-- PHOTO GRID — replace src with your actual photos -->
+        <div class="photo-grid layout-hero">
+          <div class="photo-item tall"
+               data-caption="Georgian-era garnet parure — brooch, earrings, and bracelet, c. 1820–1840"
+               data-category="Fine Jewelry">
+            <!-- Using actual image from existing ALU site -->
+            <img src="https://alittleunlimited.com/wp-content/uploads/2024/12/2023-12-01_SawtellGlenviewWarehouse_GemstoneRings-1024x390.jpg"
+                 alt="Gemstone rings from Glenview estate sale"
+                 loading="lazy" />
+            <div class="photo-caption">
+              <span class="category-tag">Fine Jewelry</span>
+              <p>Gemstone ring collection — individually researched and priced by period and stone quality</p>
+            </div>
+          </div>
+          <div style="display:grid; gap:3px;">
+            <div class="photo-item medium"
+                 data-caption="Chinese porcelain collection — dynasty-identified prior to pricing"
+                 data-category="Chinese Antiques">
+              <img src="https://alittleunlimited.com/wp-content/uploads/2024/11/2024-10-21_ChinesePorcelainCoins.jpg"
+                   alt="Chinese porcelain and coins"
+                   loading="lazy" />
+              <div class="photo-caption">
+                <span class="category-tag">Chinese Antiques &amp; Coins</span>
+                <p>Porcelain vessels and coin groupings — catalogued by category before the sale</p>
+              </div>
+            </div>
+            <div class="photo-item short" style="background:var(--charcoal);">
+              <!-- Placeholder for additional estate photo -->
+              <div class="photo-placeholder">
+                <p>+ Photo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sale-description">
+          <div class="sale-narrative">
+            "What appeared on initial walkthrough to be a well-appointed mid-century household contained, in a single study, a numismatic collection spanning six decades and an art deco jewelry grouping that had never been appraised. Every coin was identified and graded before the sale opened. Every piece of jewelry was priced to current market."
+          </div>
+          <div class="sale-details">
+            <div class="detail-row">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">Glenview, IL</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Categories</span>
+              <div class="detail-value">
+                <div class="category-pills">
+                  <span class="pill">Fine Jewelry</span>
+                  <span class="pill">Rare Coins</span>
+                  <span class="pill">Chinese Antiques</span>
+                  <span class="pill">Precious Metals</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Notable</span>
+              <span class="detail-value">Art Deco platinum and diamond grouping; pre-1933 U.S. gold coin set; Chinese export porcelain grouping</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Referred By</span>
+              <span class="detail-value">Trust &amp; estate attorney, Cook County</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════
+           SALE 2 — Prairie Style / Art Glass
+      ════════════════════════════════════════════════ -->
+      <div class="sale-entry" data-categories="artglass furnishings">
+        <div class="sale-header">
+          <div>
+            <span class="eyebrow">Wilmette, IL</span>
+            <h2>Prairie Style Estate — Art Glass &amp; Architectural Antiques</h2>
+          </div>
+          <div class="sale-meta">
+            <span class="location">Wilmette</span>
+            <span>2023</span>
+          </div>
+        </div>
+
+        <div class="photo-grid layout-3b">
+          <div class="photo-item medium"
+               data-caption="Prairie-style leaded glass windows — attributed and priced by period"
+               data-category="Art Glass">
+            <img src="https://alittleunlimited.com/wp-content/uploads/2023/09/2023-09-22_PrairieWillmette_PrairieStyleLeadedGlassWindows.jpg"
+                 alt="Prairie style leaded glass windows"
+                 loading="lazy" />
+            <div class="photo-caption">
+              <span class="category-tag">Art Glass</span>
+              <p>Prairie-style leaded glass windows — period and attribution researched prior to pricing</p>
+            </div>
+          </div>
+          <div class="photo-item medium" style="background:var(--charcoal);">
+            <div class="photo-placeholder"><p>+ Photo</p></div>
+          </div>
+          <div class="photo-item medium" style="background:var(--charcoal);">
+            <div class="photo-placeholder"><p>+ Photo</p></div>
+          </div>
+        </div>
+
+        <div class="sale-description">
+          <div class="sale-narrative">
+            "A 1912 Prairie-style home whose contents matched its architecture — leaded art glass windows, period American furniture, and a collection of Arts &amp; Crafts pottery that most buyers in an ordinary sale would never have recognized for what it was."
+          </div>
+          <div class="sale-details">
+            <div class="detail-row">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">Wilmette, IL</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Categories</span>
+              <div class="detail-value">
+                <div class="category-pills">
+                  <span class="pill">Art Glass</span>
+                  <span class="pill">Antique Furnishings</span>
+                  <span class="pill">American Pottery</span>
+                  <span class="pill">Architectural Antiques</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Notable</span>
+              <span class="detail-value">Prairie-style leaded glass windows; Arts &amp; Crafts period pottery; period American Mission furniture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════
+           SALE 3 — Vintage Cameras (existing photo available)
+      ════════════════════════════════════════════════ -->
+      <div class="sale-entry" data-categories="furnishings">
+        <div class="sale-header">
+          <div>
+            <span class="eyebrow">Lincoln Park, Chicago</span>
+            <h2>Lincoln Park Estate — Vintage Collectibles &amp; Photography Equipment</h2>
+          </div>
+          <div class="sale-meta">
+            <span class="location">Lincoln Park</span>
+            <span>2024</span>
+          </div>
+        </div>
+
+        <div class="photo-grid layout-2">
+          <div class="photo-item medium"
+               data-caption="Vintage camera collection — Leica, Rolleiflex, and medium format cameras"
+               data-category="Collectibles">
+            <img src="https://alittleunlimited.com/wp-content/uploads/2024/12/2024-10-04_WehrleLincolnPark_VintageCameras.jpg"
+                 alt="Vintage cameras from Lincoln Park estate"
+                 loading="lazy" />
+            <div class="photo-caption">
+              <span class="category-tag">Vintage Collectibles</span>
+              <p>Vintage camera collection — individually identified and priced by make, model, and condition</p>
+            </div>
+          </div>
+          <div class="photo-item medium" style="background:var(--charcoal);">
+            <div class="photo-placeholder"><p>+ Photo</p></div>
+          </div>
+        </div>
+
+        <div class="sale-description">
+          <div class="sale-narrative">
+            "Decades of accumulated collecting — vintage cameras, optical equipment, and associated collectibles that required individual identification and model-by-model pricing to recover actual market value."
+          </div>
+          <div class="sale-details">
+            <div class="detail-row">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">Lincoln Park, Chicago</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Categories</span>
+              <div class="detail-value">
+                <div class="category-pills">
+                  <span class="pill">Vintage Collectibles</span>
+                  <span class="pill">Photography Equipment</span>
+                  <span class="pill">Mid-Century Furnishings</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Notable</span>
+              <span class="detail-value">Leica, Rolleiflex, and medium format camera collection; vintage optical equipment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════════════
+           ADD YOUR ESTATES BELOW
+           Copy a sale-entry block and fill in details.
+           Each photo-item needs:
+             src="path/to/your-photo.jpg"
+             data-caption="Description for lightbox"
+             data-category="Category label"
+      ════════════════════════════════════════════════ -->
+
+      <!-- PLACEHOLDER ENTRY — for future estates -->
+      <div class="sale-entry" data-categories="jewelry couture">
+        <div class="sale-header">
+          <div>
+            <span class="eyebrow">Kenilworth / Lake Forest</span>
+            <h2>North Shore Estate — Couture &amp; Fine Jewelry</h2>
+          </div>
+          <div class="sale-meta">
+            <span class="location">North Shore</span>
+            <span>2024–2025</span>
+          </div>
+        </div>
+
+        <div class="photo-grid layout-mosaic">
+          <div class="photo-item tall" style="background:var(--charcoal);">
+            <div class="photo-placeholder" style="min-height:360px;">
+              <p>Add estate photo</p>
+            </div>
+          </div>
+          <div class="photo-item medium" style="background:var(--charcoal);">
+            <div class="photo-placeholder"><p>Add photo</p></div>
+          </div>
+          <div class="photo-item medium" style="background:var(--charcoal);">
+            <div class="photo-placeholder"><p>Add photo</p></div>
+          </div>
+        </div>
+
+        <div class="sale-description">
+          <div class="sale-narrative">
+            "Add your estate narrative here — one or two sentences describing what made this estate notable and what expertise it required. Written in first person, past tense, as if explaining the work to a professional referral source."
+          </div>
+          <div class="sale-details">
+            <div class="detail-row">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">Kenilworth / Lake Forest, IL</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Categories</span>
+              <div class="detail-value">
+                <div class="category-pills">
+                  <span class="pill">Vintage Couture</span>
+                  <span class="pill">Fine Jewelry</span>
+                  <span class="pill">Designer Accessories</span>
+                </div>
+              </div>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Notable</span>
+              <span class="detail-value">Add notable items here — signed pieces, significant finds, anything that demonstrates the expertise required</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Referred By</span>
+              <span class="detail-value">Add referral source type (attorney, bank trust, family) — specific names are optional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </div><!-- /sales-list -->
+
+  <!-- CTA -->
+  <div class="portfolio-cta">
+    <div class="container">
+      <h2>Have a Complex Estate?</h2>
+      <p>If what you've seen here reflects the kind of estate you're working with, we would welcome a conversation.</p>
+      <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+        <a href="professionals.html" class="btn-primary">For Attorneys &amp; Fiduciaries</a>
+        <a href="contact.html" class="btn-ghost">Request a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">A Little Unlimited<span>Estate Sale Services</span></div>
+          <p>Chicago's specialist in complex, high-value estate sales. We bring professional expertise to estates that deserve more than a price tag and a weekend sale.</p>
+        </div>
+        <div class="footer-col"><h5>Navigation</h5><ul><li><a href="about.html">About</a></li><li><a href="specialties.html">Specialties</a></li><li><a href="professionals.html">For Professionals</a></li><li><a href="portfolio.html">Past Sales</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h5>Specialties</h5><ul><li><a href="specialties.html#jewelry">Fine Jewelry</a></li><li><a href="specialties.html#coins">Rare Coins</a></li><li><a href="specialties.html#couture">Vintage Couture</a></li><li><a href="specialties.html#chinese">Chinese Antiques</a></li><li><a href="specialties.html#artglass">Art Glass</a></li></ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:Bill@ALittleUnlimited.com">Bill@ALittleUnlimited.com</a></li><li><a href="contact.html">Request a Consultation</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 A Little Unlimited Estate Sale Services. Chicago, IL &amp; North Shore Corridor.</p></div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Category filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const saleEntries = document.querySelectorAll('.sale-entry');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function () {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+
+        saleEntries.forEach(entry => {
+          if (filter === 'all') {
+            entry.style.display = 'block';
+          } else {
+            const cats = entry.dataset.categories || '';
+            entry.style.display = cats.includes(filter) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    const lightbox      = document.getElementById('lightbox');
+    const lightboxImg   = document.getElementById('lightbox-img');
+    const lightboxCap   = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.photo-item img').forEach(img => {
+      img.addEventListener('click', function () {
+        const item    = this.closest('.photo-item');
+        const caption = item.dataset.caption || '';
+        const cat     = item.dataset.category || '';
+        lightboxImg.src = this.src;
+        lightboxImg.alt = this.alt;
+        lightboxCap.textContent = cat ? `${cat} — ${caption}` : caption;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
