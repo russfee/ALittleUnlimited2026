@@ -145,7 +145,7 @@ section {
 
 .nav-logo {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.18rem;
   font-weight: 400;
   color: var(--white);
   letter-spacing: 0.04em;
@@ -155,7 +155,7 @@ section {
 .nav-logo span {
   display: block;
   margin-top: 2px;
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-family: var(--font-sans);
   font-weight: 300;
   letter-spacing: 0.18em;
@@ -242,6 +242,16 @@ section {
   max-width: 760px;
 }
 
+.hero-inner-centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-inner-centered .rule {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero h1 {
   color: var(--white);
   font-style: italic;
@@ -263,11 +273,20 @@ section {
   margin-bottom: 48px;
 }
 
+.hero-inner-centered .hero-sub {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero-actions,
 .portfolio-cta-actions {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.hero-inner-centered .hero-actions {
+  justify-content: center;
 }
 
 .btn-primary {
@@ -371,6 +390,103 @@ section {
   text-transform: uppercase;
   color: var(--gold);
   font-style: normal;
+}
+
+.mailing-list-section {
+  background: var(--white);
+}
+
+.mailing-list-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 48px;
+  align-items: start;
+  padding: 48px;
+  border: 1px solid rgba(184, 153, 44, 0.18);
+  background:
+    linear-gradient(180deg, rgba(250, 247, 238, 0.92) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.mailing-list-copy h2 {
+  margin-bottom: 16px;
+}
+
+.mailing-list-copy .body-copy {
+  max-width: 460px;
+  color: var(--slate);
+}
+
+.mailing-list-form {
+  display: grid;
+  gap: 20px;
+}
+
+.mailing-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.mailing-list-form input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid rgba(32, 32, 32, 0.14);
+  background: var(--white);
+  color: var(--mid);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+.mailing-list-form input::placeholder {
+  color: rgba(61, 66, 74, 0.7);
+}
+
+.mailing-list-form input:focus {
+  outline: none;
+  border-color: rgba(184, 153, 44, 0.65);
+  box-shadow: 0 0 0 3px rgba(184, 153, 44, 0.12);
+}
+
+.mailing-list-honeypot {
+  position: absolute;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.mailing-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mailing-list-submit {
+  min-width: 240px;
+}
+
+.mailing-list-submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.mailing-list-message {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.mailing-list-message.success {
+  color: #2d6b43;
+}
+
+.mailing-list-message.error {
+  color: #9f2f27;
 }
 
 .expertise {
@@ -1405,6 +1521,14 @@ section {
     gap: 16px;
   }
 
+  .nav-logo {
+    font-size: 1.08rem;
+  }
+
+  .nav-logo span {
+    font-size: 0.68rem;
+  }
+
   .nav-links-open {
     display: flex;
   }
@@ -1426,7 +1550,9 @@ section {
 
   .testimonials-grid,
   .credential-grid,
-  .specialty-inner {
+  .specialty-inner,
+  .mailing-list-panel,
+  .mailing-list-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1483,6 +1609,15 @@ section {
   .hero-actions,
   .portfolio-cta-actions {
     flex-direction: column;
+  }
+
+  .mailing-list-panel {
+    padding: 32px 24px;
+  }
+
+  .mailing-list-submit {
+    width: 100%;
+    min-width: 0;
   }
 
   .photo-grid .photo-item:first-child {

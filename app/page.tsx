@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { MailingListForm } from "@/components/mailing-list-form";
 import { SiteFooter } from "@/components/site-footer";
 import { buildMetadata } from "@/lib/metadata";
 import { geoTags, homepageExpertise, homepageTestimonials, processSteps } from "@/lib/site-data";
@@ -11,18 +12,19 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="container">
-          <div className="hero-inner">
-            <span className="eyebrow">Chicago &amp; North Shore</span>
+          <div className="hero-inner hero-inner-centered">
+            <span className="eyebrow">Chicago, the North Shore, and beyond.</span>
             <div className="rule" />
             <h1>
-              When the Estate Requires <em>Expertise</em>,
+              When the Estate Requires <em>Expertise,</em>
               <br />
               Not Just Effort
             </h1>
             <p className="hero-sub">
-              A Little Unlimited specializes in complex, collection-rich estates — fine jewelry,
-              rare coins, vintage couture, Chinese antiques, art glass, and luxury collectibles. We
-              bring professional knowledge to estates that deserve more than a price tag.
+              A Little Unlimited specializes in complex, collection-rich estates — designer and
+              antique furnishings, fine jewelry, rare coins, vintage couture, Chinese antiques, art
+              glass, and luxury collectibles. We bring professional knowledge to estates that
+              deserve more than a price tag.
             </p>
             <div className="hero-actions">
               <Link className="btn-primary" href="/professionals">
@@ -51,6 +53,23 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <section className="mailing-list-section">
+        <div className="container">
+          <div className="mailing-list-panel">
+            <div className="mailing-list-copy">
+              <span className="eyebrow">Stay Informed</span>
+              <div className="rule" />
+              <h2>Join Our Mailing List</h2>
+              <p className="body-copy">
+                Add your name and contact information to receive updates about future sales and
+                notable estate offerings.
+              </p>
+            </div>
+            <MailingListForm />
+          </div>
+        </div>
+      </section>
 
       <section className="expertise">
         <div className="container">
@@ -118,8 +137,7 @@ export default function HomePage() {
                 estate includes significant personal property.
               </p>
               <p style={{ marginTop: 16 }}>
-                Bank trust departments and wealth management fiduciaries at institutions including
-                Northern Trust, BMO, and Wintrust.
+                Bank trust departments and wealth management fiduciaries at financial institutions.
               </p>
               <p style={{ marginTop: 16 }}>
                 High-end residential real estate professionals on the North Shore and in Chicago who
@@ -197,4 +215,3 @@ export default function HomePage() {
     </>
   );
 }
-

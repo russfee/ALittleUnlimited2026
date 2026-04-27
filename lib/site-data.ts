@@ -47,6 +47,7 @@ export const siteName = "A Little Unlimited Estate Sale Services";
 
 export const navigationItems: NavItem[] = [
   { href: "/about", label: "About" },
+  { href: "/about#bill-bio", label: "Bill's Bio" },
   { href: "/specialties", label: "Specialties" },
   { href: "/professionals", label: "For Professionals" },
   { href: "/portfolio", label: "Past Sales" },
@@ -538,4 +539,3 @@ export const contactCategoryOptions = [
   { label: "Precious Metals", value: "metals" },
   { label: "Fine Furnishings", value: "furnishings" },
 ];
-

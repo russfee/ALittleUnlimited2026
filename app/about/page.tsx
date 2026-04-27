@@ -25,7 +25,7 @@ export default function AboutPage() {
 
       <section style={{ background: "var(--white)" }}>
         <div className="container">
-          <div className="about-two-column">
+          <div className="about-two-column" id="bill-bio">
             <div>
               <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
               <div className="rule" />
