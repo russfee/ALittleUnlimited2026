@@ -25,11 +25,55 @@ export default function AboutPage() {
 
       <section style={{ background: "var(--white)" }}>
         <div className="container">
-          <div className="about-two-column" id="bill-bio">
+          <div className="about-two-column">
             <div>
               <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
               <div className="rule" />
               <h2>A Specialty Practice, By Design</h2>
+              <p className="body-copy body-copy-spaced">
+                I founded A Little Unlimited to specialize in the estates that require genuine
+                expertise — collections of antique and fine jewelry, rare coins, vintage couture,
+                Chinese antiques, art glass, and luxury collectibles. I work closely with
+                attorneys, trust officers, and fiduciaries who need a vendor they can trust with
+                complex and high-value estates.
+              </p>
+              <p className="body-copy">
+                The general estate sale market is well-served by general estate sale companies. What
+                it lacks is a specialist — a company with the category knowledge to walk into a
+                complex estate and actually understand what it contains, what it is worth, and who
+                should be buying it.
+              </p>
+              <p className="body-copy">
+                That is the company I have built. Every decision about who we work with, how we
+                price, and how we present is guided by a single principle: the estate deserves
+                expertise, not guesswork.
+              </p>
+            </div>
+            <div>
+              <div className="gold-panel">
+                <span className="eyebrow gold-panel-label">Areas of Personal Expertise</span>
+                <ul className="gold-panel-list">
+                  <li>Fine &amp; antique jewelry — identification, grading, market pricing</li>
+                  <li>Gemstones — GIA gemological credentials in progress</li>
+                  <li>Precious metals — melt analysis, maker identification</li>
+                  <li>Rare coins &amp; numismatics — grading reference, lot structuring</li>
+                  <li>Chinese antiques — porcelain, jade, bronzes, hardwood furniture</li>
+                  <li>Art glass &amp; American pottery — Tiffany, Steuben, Rookwood</li>
+                  <li>Vintage couture — designer identification, authentication</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bill-bio" style={{ background: "var(--off-white)" }}>
+        <div className="container">
+          <div style={{ margin: "0 auto", maxWidth: 860 }}>
+            <div>
+              <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
+              <div className="rule" />
+              <h2>Bill&apos;s Bio</h2>
               <p className="body-copy body-copy-spaced">
                 What started as a penny collection has grown into my life&apos;s work.
               </p>
@@ -71,20 +115,6 @@ export default function AboutPage() {
                 Illinois, and I am a Certified Personal Property Appraiser through the Certified
                 Appraisers Guild of America.
               </p>
-            </div>
-            <div>
-              <div className="gold-panel">
-                <span className="eyebrow gold-panel-label">Areas of Personal Expertise</span>
-                <ul className="gold-panel-list">
-                  <li>Fine &amp; antique jewelry — identification, grading, market pricing</li>
-                  <li>Gemstones — GIA gemological credentials in progress</li>
-                  <li>Precious metals — melt analysis, maker identification</li>
-                  <li>Rare coins &amp; numismatics — grading reference, lot structuring</li>
-                  <li>Chinese antiques — porcelain, jade, bronzes, hardwood furniture</li>
-                  <li>Art glass &amp; American pottery — Tiffany, Steuben, Rookwood</li>
-                  <li>Vintage couture — designer identification, authentication</li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>
