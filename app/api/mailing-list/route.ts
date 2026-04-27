@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 import { NextResponse } from "next/server";
 
 type MailingListSubmission = {
@@ -100,15 +102,36 @@ async function upsertAudienceMember({
   name: string;
   phone?: string;
 }) {
+  const subscriberHash = hashSubscriberEmail(email);
   const response = await fetch(
-    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members`,
+    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}`,
     {
       body: JSON.stringify({
         email_address: email,
         merge_fields: buildMergeFields({ mergeFields, name, phone }),
-        status: mailchimpDoubleOptIn ? "pending" : "subscribed",
-        tags: mailchimpTags,
-        update_existing: true,
+        status_if_new: mailchimpDoubleOptIn ? "pending" : "subscribed",
+      }),
+      headers: {
+        Authorization: buildAuthHeader(),
+        "Content-Type": "application/json",
+      },
+      method: "PUT",
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to upsert Mailchimp member: ${await response.text()}`);
+  }
+
+  if (!mailchimpTags.length) {
+    return;
+  }
+
+  const tagsResponse = await fetch(
+    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}/tags`,
+    {
+      body: JSON.stringify({
+        tags: mailchimpTags.map((name) => ({ name, status: "active" })),
       }),
       headers: {
         Authorization: buildAuthHeader(),
@@ -118,8 +141,8 @@ async function upsertAudienceMember({
     },
   );
 
-  if (!response.ok) {
-    throw new Error("Failed to create Mailchimp member.");
+  if (!tagsResponse.ok) {
+    throw new Error(`Failed to tag Mailchimp member: ${await tagsResponse.text()}`);
   }
 }
 
@@ -153,6 +176,10 @@ function buildMergeFields({
 
 function buildAuthHeader() {
   return `Basic ${Buffer.from(`anystring:${mailchimpApiKey}`).toString("base64")}`;
+}
+
+function hashSubscriberEmail(email: string) {
+  return createHash("md5").update(email.trim().toLowerCase()).digest("hex");
 }
 
 async function resolveAudienceId(configuredId: string) {
