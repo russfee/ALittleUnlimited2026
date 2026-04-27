@@ -49,8 +49,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    const mergeFields = await getAudienceMergeFields();
-    await upsertAudienceMember({ email, mergeFields, name, phone });
+    const audienceId = await resolveAudienceId(mailchimpAudienceId);
+    const mergeFields = await getAudienceMergeFields(audienceId);
+    await upsertAudienceMember({ audienceId, email, mergeFields, name, phone });
   } catch {
     return NextResponse.json(
       { error: "We could not add you right now. Please try again later." },
@@ -65,9 +66,9 @@ type MailchimpMergeField = {
   tag: string;
 };
 
-async function getAudienceMergeFields() {
+async function getAudienceMergeFields(audienceId: string) {
   const response = await fetch(
-    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${mailchimpAudienceId}/merge-fields`,
+    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/merge-fields`,
     {
       headers: {
         Authorization: buildAuthHeader(),
@@ -87,18 +88,20 @@ async function getAudienceMergeFields() {
 }
 
 async function upsertAudienceMember({
+  audienceId,
   email,
   mergeFields,
   name,
   phone,
 }: {
+  audienceId: string;
   email: string;
   mergeFields: Set<string>;
   name: string;
   phone?: string;
 }) {
   const response = await fetch(
-    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${mailchimpAudienceId}/members`,
+    `https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members`,
     {
       body: JSON.stringify({
         email_address: email,
@@ -150,4 +153,34 @@ function buildMergeFields({
 
 function buildAuthHeader() {
   return `Basic ${Buffer.from(`anystring:${mailchimpApiKey}`).toString("base64")}`;
+}
+
+async function resolveAudienceId(configuredId: string) {
+  if (!/^\d+$/.test(configuredId)) {
+    return configuredId;
+  }
+
+  const response = await fetch(`https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists?count=100`, {
+    headers: {
+      Authorization: buildAuthHeader(),
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to load Mailchimp audiences.");
+  }
+
+  const payload = (await response.json()) as {
+    lists?: Array<{ id: string; web_id: number }>;
+  };
+
+  const match = payload.lists?.find((list) => String(list.web_id) === configuredId);
+
+  if (!match) {
+    throw new Error("Configured Mailchimp audience was not found.");
+  }
+
+  return match.id;
 }
