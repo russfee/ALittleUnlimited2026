@@ -196,7 +196,7 @@ export default function HomePage() {
 
       <div className="geography">
         <div className="container">
-          <h2>Chicago &amp; the North Shore Corridor</h2>
+          <h2>Chicago, the North Shore, and beyond.</h2>
           <p>
             Serving the communities where complex, high-value estates are most concentrated — with
             the discretion and expertise those communities deserve.

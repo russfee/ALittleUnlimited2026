@@ -42,7 +42,7 @@ export type PortfolioSale = {
 };
 
 export const siteUrl = "https://alittleunlimited.com";
-export const businessEmail = "Bill@ALittleUnlimited.com";
+export const businessEmail = "info@alittleunlimited.com";
 export const siteName = "A Little Unlimited Estate Sale Services";
 
 export const navigationItems: NavItem[] = [
@@ -50,7 +50,6 @@ export const navigationItems: NavItem[] = [
   { href: "/about#bill-bio", label: "Bill's Bio" },
   { href: "/specialties", label: "Specialties" },
   { href: "/professionals", label: "For Professionals" },
-  { href: "/portfolio", label: "Past Sales" },
 ];
 
 export const footerSpecialties: NavItem[] = [
@@ -100,6 +99,11 @@ export const footerDescription =
 
 export const homepageExpertise = [
   {
+    title: "Designer & Antique Furnishings",
+    description:
+      "Provenance research, period identification, and high-end resale routing. Not every fine piece belongs in a weekend sale — we know the difference.",
+  },
+  {
     title: "Fine & Antique Jewelry",
     description:
       "Signed pieces, Georgian, Victorian, Art Deco, mid-century modern. Research-based pricing using current auction records and dealer data. GIA gemological credentials in progress.",
@@ -115,11 +119,6 @@ export const homepageExpertise = [
       "Chanel, Balenciaga, Halston, Pucci, and beyond. Authentication, condition expertise, and access to the buyer networks these pieces deserve.",
   },
   {
-    title: "Chinese Antiques",
-    description:
-      "Porcelain, jade carvings, bronzes, lacquerware, hardwood furniture. Dynasty identification, attribution research, and current collector market valuation.",
-  },
-  {
     title: "Art Glass & American Pottery",
     description:
       "Tiffany Studios, Steuben, Rookwood, Weller, majolica, Arts & Crafts, mid-century studio. Proper attribution before pricing — always.",
@@ -130,9 +129,9 @@ export const homepageExpertise = [
       "Melt value analysis, maker identification, sterling versus silver-plate, gold alloy assessment. Accuracy that protects families and estate records.",
   },
   {
-    title: "Designer & Antique Furnishings",
+    title: "Chinese Antiques",
     description:
-      "Provenance research, period identification, and high-end resale routing. Not every fine piece belongs in a weekend sale — we know the difference.",
+      "Porcelain, jade carvings, bronzes, lacquerware, hardwood furniture. Dynasty identification, attribution research, and current collector market valuation.",
   },
   {
     title: "Fine Art & Works on Paper",

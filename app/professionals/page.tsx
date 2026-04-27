@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { buildMetadata } from "@/lib/metadata";
+import { businessEmail } from "@/lib/site-data";
 
 export const metadata = buildMetadata("professionals");
 
@@ -225,8 +226,8 @@ export default function ProfessionalsPage() {
                 <div className="contact-detail">
                   <span className="label">Email</span>
                   <span className="value" style={{ color: "var(--white)" }}>
-                    <a href="mailto:Bill@ALittleUnlimited.com" style={{ color: "var(--white)" }}>
-                      Bill@ALittleUnlimited.com
+                    <a href={`mailto:${businessEmail}`} style={{ color: "var(--white)" }}>
+                      {businessEmail}
                     </a>
                   </span>
                 </div>
@@ -235,7 +236,7 @@ export default function ProfessionalsPage() {
                 <div className="contact-detail">
                   <span className="label">Service Area</span>
                   <span className="value" style={{ color: "var(--white)", fontSize: "1rem" }}>
-                    Chicago, IL &amp; North Shore Corridor
+                    Chicago, the North Shore, and beyond.
                   </span>
                 </div>
               </div>
@@ -251,4 +252,3 @@ export default function ProfessionalsPage() {
     </>
   );
 }
-

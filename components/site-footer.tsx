@@ -59,11 +59,10 @@ export function SiteFooter({ showSeoTagline = false }: SiteFooterProps) {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2026 A Little Unlimited Estate Sale Services. Chicago, IL &amp; North Shore Corridor.</p>
-          {showSeoTagline ? <p>Complex estate sales Chicago &amp; North Shore</p> : null}
+          <p>&copy; 2026 A Little Unlimited Estate Sale Services. Chicago, the North Shore, and beyond.</p>
+          {showSeoTagline ? <p>Complex estate sales in Chicago, the North Shore, and beyond.</p> : null}
         </div>
       </div>
     </footer>
   );
 }
-

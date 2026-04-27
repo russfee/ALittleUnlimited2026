@@ -2,6 +2,7 @@ import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { buildMetadata } from "@/lib/metadata";
+import { businessEmail } from "@/lib/site-data";
 
 export const metadata = buildMetadata("contact");
 
@@ -40,14 +41,14 @@ export default function ContactPage() {
               <div className="contact-detail" style={{ marginTop: 40 }}>
                 <span className="label">Email</span>
                 <span className="value">
-                  <a href="mailto:Bill@ALittleUnlimited.com">Bill@ALittleUnlimited.com</a>
+                  <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
                 </span>
               </div>
 
               <div className="contact-detail">
                 <span className="label">Service Area</span>
                 <span className="value" style={{ fontSize: "1rem", fontFamily: "var(--font-sans)" }}>
-                  Chicago, IL &amp; North Shore Corridor
+                  Chicago, the North Shore, and beyond.
                 </span>
               </div>
 
@@ -97,4 +98,3 @@ export default function ContactPage() {
     </>
   );
 }
-
