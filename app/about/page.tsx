@@ -31,22 +31,45 @@ export default function AboutPage() {
               <div className="rule" />
               <h2>A Specialty Practice, By Design</h2>
               <p className="body-copy body-copy-spaced">
-                I founded A Little Unlimited to specialize in the estates that require genuine
-                expertise — collections of antique and fine jewelry, rare coins, vintage couture,
-                Chinese antiques, art glass, and luxury collectibles. I work closely with
-                attorneys, trust officers, and fiduciaries who need a vendor they can trust with
-                complex and high-value estates.
+                What started as a penny collection has grown into my life's work.
               </p>
               <p className="body-copy">
-                The general estate sale market is well-served by general estate sale companies. What
-                it lacks is a specialist — a company with the category knowledge to walk into a
-                complex estate and actually understand what it contains, what it is worth, and who
-                should be buying it.
+                I was born in Chicago, but when I was five, my family moved to a small town in
+                Western Michigan. My parents gave me their penny collections, and that's where my
+                interest in collecting first began. When I was 12 and old enough to get a job, I
+                worked summers on local farms. I spent my earnings at auctions, accumulating a
+                collection mostly of depression glass, primitives, and small pieces of furniture. A
+                special gift at that time was meeting a local antique dealer who became my mentor
+                and shared with me her knowledge, experience, and reference library.
               </p>
               <p className="body-copy">
-                That is the company I have built. Every decision about who we work with, how we
-                price, and how we present is guided by a single principle: the estate deserves
-                expertise, not guesswork.
+                In 1983, just after I turned 16, I borrowed my Boy Scout troop leader's van and set
+                up and sold at my first antique show. I continued to sell at shows through high
+                school and college, using my hard-earned money to pay for my tuition at Michigan
+                State University.
+              </p>
+              <p className="body-copy">
+                Now armed with a Bachelor of Arts Degree in Business, I left the world of
+                entrepreneurship and entered the corporate scene. In the following years, I held a
+                variety of positions in accounting, real estate sales, management, and as executive
+                assistant to a high-net-worth individual. All were enlightening, but I was always
+                drawn back to the more interesting world of buying and selling antiques.
+              </p>
+              <p className="body-copy">
+                In 2005, I said goodbye to the corporate world to concentrate on what I loved:
+                buying and selling higher-end items in various genres. My focus now was buying and
+                selling Chinese porcelains and other antiques, fine and costume jewelry, antique
+                silver, coins, and rarer pieces of porcelain, crystal, and other art.
+              </p>
+              <p className="body-copy">
+                Finally, in 2018, I made the decision to stop buying and selling antiques and to
+                launch my own estate sale company. I assembled a team of professionals that I both
+                trust and respect. And together, we provide the best service possible to both the
+                clients who hire us to sell their cherished belongings and to the customers who buy
+                them. We take great pride in the quality of our work and the success of every sale.
+                A Little Unlimited Estate Sales is licensed, insured, and bonded in the State of
+                Illinois, and I am a Certified Personal Property Appraiser through the Certified
+                Appraisers Guild of America.
               </p>
             </div>
             <div>
@@ -135,4 +158,3 @@ export default function AboutPage() {
     </>
   );
 }
-
