@@ -31,11 +31,11 @@ export default function AboutPage() {
               <div className="rule" />
               <h2>A Specialty Practice, By Design</h2>
               <p className="body-copy body-copy-spaced">
-                What started as a penny collection has grown into my life's work.
+                What started as a penny collection has grown into my life&apos;s work.
               </p>
               <p className="body-copy">
                 I was born in Chicago, but when I was five, my family moved to a small town in
-                Western Michigan. My parents gave me their penny collections, and that's where my
+                Western Michigan. My parents gave me their penny collections, and that&apos;s where my
                 interest in collecting first began. When I was 12 and old enough to get a job, I
                 worked summers on local farms. I spent my earnings at auctions, accumulating a
                 collection mostly of depression glass, primitives, and small pieces of furniture. A
@@ -43,7 +43,7 @@ export default function AboutPage() {
                 and shared with me her knowledge, experience, and reference library.
               </p>
               <p className="body-copy">
-                In 1983, just after I turned 16, I borrowed my Boy Scout troop leader's van and set
+                In 1983, just after I turned 16, I borrowed my Boy Scout troop leader&apos;s van and set
                 up and sold at my first antique show. I continued to sell at shows through high
                 school and college, using my hard-earned money to pay for my tuition at Michigan
                 State University.
