@@ -17,7 +17,6 @@ export function MailingListForm() {
     const formData = new FormData(form);
 
     const payload = {
-      website: String(formData.get("website") ?? ""),
       email: String(formData.get("email") ?? ""),
       name: String(formData.get("name") ?? ""),
       phone: String(formData.get("phone") ?? ""),
@@ -52,14 +51,6 @@ export function MailingListForm() {
         <input autoComplete="name" name="name" placeholder="Name" required type="text" />
         <input autoComplete="email" name="email" placeholder="Email" required type="email" />
         <input autoComplete="tel" name="phone" placeholder="Phone" type="tel" />
-        <input
-          autoComplete="off"
-          aria-hidden="true"
-          className="mailing-list-honeypot"
-          name="website"
-          tabIndex={-1}
-          type="text"
-        />
       </div>
       <div className="mailing-list-actions">
         <button className="btn-primary mailing-list-submit" disabled={status === "submitting"} type="submit">

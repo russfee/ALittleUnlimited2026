@@ -6,7 +6,6 @@ type MailingListSubmission = {
   email: string;
   name: string;
   phone?: string;
-  website?: string;
 };
 
 const mailchimpApiKey = process.env.MAILCHIMP_API_KEY;
@@ -25,13 +24,6 @@ export async function POST(request: Request) {
     body = (await request.json()) as MailingListSubmission;
   } catch {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
-  }
-
-  if (body.website?.trim()) {
-    return NextResponse.json(
-      { error: "Submission was blocked by the spam check. Please try again without autofill." },
-      { status: 400 },
-    );
   }
 
   const name = body.name?.trim();
