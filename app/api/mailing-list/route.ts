@@ -193,8 +193,12 @@ function getErrorDetail(error: unknown) {
 }
 
 async function resolveAudienceId(configuredId: string) {
-  if (!/^\d+$/.test(configuredId)) {
+  if (await audienceExists(configuredId)) {
     return configuredId;
+  }
+
+  if (!/^\d+$/.test(configuredId)) {
+    throw new Error("Configured Mailchimp audience was not found.");
   }
 
   const response = await fetch(`https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists?count=100`, {
@@ -220,4 +224,16 @@ async function resolveAudienceId(configuredId: string) {
   }
 
   return match.id;
+}
+
+async function audienceExists(audienceId: string) {
+  const response = await fetch(`https://${mailchimpServerPrefix}.api.mailchimp.com/3.0/lists/${audienceId}`, {
+    headers: {
+      Authorization: buildAuthHeader(),
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+  });
+
+  return response.ok;
 }
