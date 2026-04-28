@@ -1099,17 +1099,35 @@ section {
 
 .contact-check-label {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
+  padding: 12px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--white);
   font-size: 0.82rem;
   text-transform: none;
   letter-spacing: 0;
   color: var(--mid);
   cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
 }
 
-.contact-check-label input {
-  width: auto;
+.contact-check-label:hover {
+  border-color: rgba(184, 153, 44, 0.5);
+}
+
+.contact-check-label:has(input:checked) {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+
+.contact-check-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: 0 0 auto;
+  appearance: auto;
+  accent-color: var(--gold);
 }
 
 .contact-submit {
