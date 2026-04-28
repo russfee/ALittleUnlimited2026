@@ -54,9 +54,16 @@ export async function POST(request: Request) {
     const audienceId = await resolveAudienceId(mailchimpAudienceId);
     const mergeFields = await getAudienceMergeFields(audienceId);
     await upsertAudienceMember({ audienceId, email, mergeFields, name, phone });
-  } catch {
+  } catch (error) {
+    const detail = getErrorDetail(error);
+    console.error("Mailchimp signup failed", {
+      audienceId: mailchimpAudienceId,
+      detail,
+      email,
+    });
+
     return NextResponse.json(
-      { error: "We could not add you right now. Please try again later." },
+      { error: detail },
       { status: 502 },
     );
   }
@@ -180,6 +187,14 @@ function buildAuthHeader() {
 
 function hashSubscriberEmail(email: string) {
   return createHash("md5").update(email.trim().toLowerCase()).digest("hex");
+}
+
+function getErrorDetail(error: unknown) {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+
+  return "We could not add you right now. Please try again later.";
 }
 
 async function resolveAudienceId(configuredId: string) {
