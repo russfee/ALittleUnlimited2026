@@ -60,6 +60,12 @@ export const footerSpecialties: NavItem[] = [
   { href: "/specialties#artglass", label: "Art Glass" },
 ];
 
+export const socialLinks: NavItem[] = [
+  { href: "https://www.facebook.com/ALittleUnlimitedLLC", label: "Facebook" },
+  { href: "https://instagram.com/ALittleUnlimited", label: "Instagram" },
+  { href: "https://www.tiktok.com/@alittleunlimitedllc", label: "TikTok" },
+];
+
 export const metaPages: Record<string, MetaPage> = {
   about: {
     title: "About",

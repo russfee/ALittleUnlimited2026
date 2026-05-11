@@ -18,7 +18,8 @@ export function MailingListForm() {
 
     const payload = {
       email: String(formData.get("email") ?? ""),
-      name: String(formData.get("name") ?? ""),
+      firstName: String(formData.get("firstName") ?? ""),
+      lastName: String(formData.get("lastName") ?? ""),
       phone: String(formData.get("phone") ?? ""),
     };
 
@@ -48,9 +49,51 @@ export function MailingListForm() {
   return (
     <form className="mailing-list-form" onSubmit={handleSubmit}>
       <div className="mailing-list-grid">
-        <input autoComplete="name" name="name" placeholder="Name" required type="text" />
-        <input autoComplete="email" name="email" placeholder="Email" required type="email" />
-        <input autoComplete="tel" name="phone" placeholder="Phone" type="tel" />
+        <div className="mailing-list-field">
+          <label htmlFor="mailing-first-name">First Name</label>
+          <input
+            autoComplete="given-name"
+            id="mailing-first-name"
+            name="firstName"
+            placeholder="First name"
+            required
+            type="text"
+          />
+        </div>
+        <div className="mailing-list-field">
+          <label htmlFor="mailing-last-name">Last Name</label>
+          <input
+            autoComplete="family-name"
+            id="mailing-last-name"
+            name="lastName"
+            placeholder="Last name"
+            required
+            type="text"
+          />
+        </div>
+        <div className="mailing-list-field">
+          <label htmlFor="mailing-email">Email</label>
+          <input
+            autoComplete="email"
+            id="mailing-email"
+            name="email"
+            placeholder="Email address"
+            required
+            type="email"
+          />
+        </div>
+        <div className="mailing-list-field">
+          <label htmlFor="mailing-phone">
+            Phone <span>Optional</span>
+          </label>
+          <input
+            autoComplete="tel"
+            id="mailing-phone"
+            name="phone"
+            placeholder="Phone number"
+            type="tel"
+          />
+        </div>
       </div>
       <div className="mailing-list-actions">
         <button className="btn-primary mailing-list-submit" disabled={status === "submitting"} type="submit">

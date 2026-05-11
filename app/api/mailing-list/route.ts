@@ -4,7 +4,9 @@ import { NextResponse } from "next/server";
 
 type MailingListSubmission = {
   email: string;
-  name: string;
+  firstName?: string;
+  lastName?: string;
+  name?: string;
   phone?: string;
 };
 
@@ -26,12 +28,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
   }
 
-  const name = body.name?.trim();
+  const legacyName = body.name?.trim();
+  const legacyNameParts = splitLegacyName(legacyName);
+  const firstName = body.firstName?.trim() || legacyNameParts.firstName;
+  const lastName = body.lastName?.trim() || legacyNameParts.lastName;
   const email = body.email?.trim();
   const phone = body.phone?.trim();
 
-  if (!name) {
-    return NextResponse.json({ error: "Please enter your name." }, { status: 400 });
+  if (!firstName) {
+    return NextResponse.json({ error: "Please enter your first name." }, { status: 400 });
+  }
+
+  if (!lastName) {
+    return NextResponse.json({ error: "Please enter your last name." }, { status: 400 });
   }
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -48,7 +57,7 @@ export async function POST(request: Request) {
   try {
     const audienceId = await resolveAudienceId(mailchimpAudienceId);
     const mergeFields = await getAudienceMergeFields(audienceId);
-    await upsertAudienceMember({ audienceId, email, mergeFields, name, phone });
+    await upsertAudienceMember({ audienceId, email, firstName, lastName, mergeFields, phone });
   } catch (error) {
     const detail = getErrorDetail(error);
     console.error("Mailchimp signup failed", {
@@ -94,14 +103,16 @@ async function getAudienceMergeFields(audienceId: string) {
 async function upsertAudienceMember({
   audienceId,
   email,
+  firstName,
+  lastName,
   mergeFields,
-  name,
   phone,
 }: {
   audienceId: string;
   email: string;
+  firstName: string;
+  lastName: string;
   mergeFields: Set<string>;
-  name: string;
   phone?: string;
 }) {
   const subscriberHash = hashSubscriberEmail(email);
@@ -110,7 +121,7 @@ async function upsertAudienceMember({
     {
       body: JSON.stringify({
         email_address: email,
-        merge_fields: buildMergeFields({ mergeFields, name, phone }),
+        merge_fields: buildMergeFields({ firstName, lastName, mergeFields, phone }),
         status_if_new: mailchimpDoubleOptIn ? "pending" : "subscribed",
       }),
       headers: {
@@ -149,17 +160,17 @@ async function upsertAudienceMember({
 }
 
 function buildMergeFields({
+  firstName,
+  lastName,
   mergeFields,
-  name,
   phone,
 }: {
+  firstName: string;
+  lastName: string;
   mergeFields: Set<string>;
-  name: string;
   phone?: string;
 }) {
   const fields: Record<string, string> = {};
-  const [firstName, ...rest] = name.split(/\s+/).filter(Boolean);
-  const lastName = rest.join(" ");
 
   if (firstName && mergeFields.has("FNAME")) {
     fields.FNAME = firstName;
@@ -174,6 +185,15 @@ function buildMergeFields({
   }
 
   return fields;
+}
+
+function splitLegacyName(name?: string) {
+  const [firstName = "", ...rest] = (name ?? "").split(/\s+/).filter(Boolean);
+
+  return {
+    firstName,
+    lastName: rest.join(" "),
+  };
 }
 
 function buildAuthHeader() {

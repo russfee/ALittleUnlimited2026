@@ -5,6 +5,7 @@ import {
   footerDescription,
   footerSpecialties,
   navigationItems,
+  socialLinks,
 } from "@/lib/site-data";
 
 type SiteFooterProps = {
@@ -22,6 +23,13 @@ export function SiteFooter({ showSeoTagline = false }: SiteFooterProps) {
               <span>Estate Sale Services</span>
             </div>
             <p>{footerDescription}</p>
+            <div aria-label="Social media links" className="footer-social-links">
+              {socialLinks.map((item) => (
+                <a href={item.href} key={item.href} rel="noreferrer" target="_blank">
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
           <div className="footer-col">
             <h5>Navigation</h5>
@@ -54,6 +62,9 @@ export function SiteFooter({ showSeoTagline = false }: SiteFooterProps) {
               </li>
               <li>
                 <Link href="/contact">Request a Consultation</Link>
+              </li>
+              <li>
+                <Link href="/#mailing-list">Join Mailing List</Link>
               </li>
             </ul>
           </div>

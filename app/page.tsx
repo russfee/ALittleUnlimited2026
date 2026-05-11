@@ -54,7 +54,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section className="mailing-list-section">
+      <section className="mailing-list-section" id="mailing-list">
         <div className="container">
           <div className="mailing-list-panel">
             <div className="mailing-list-copy">
