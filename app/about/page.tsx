@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
@@ -69,7 +70,16 @@ export default function AboutPage() {
 
       <section id="bill-bio" style={{ background: "var(--off-white)" }}>
         <div className="container">
-          <div style={{ margin: "0 auto", maxWidth: 860 }}>
+          <div className="bill-bio-content">
+            <figure className="bill-bio-photo">
+              <Image
+                alt="Bill Little of A Little Unlimited Estate Sale Services"
+                height={800}
+                sizes="(max-width: 960px) calc(100vw - 80px), 860px"
+                src="/images/bill-little-bio.jpg"
+                width={1200}
+              />
+            </figure>
             <div>
               <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
               <div className="rule" />
