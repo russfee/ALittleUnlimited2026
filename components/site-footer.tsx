@@ -23,6 +23,11 @@ export function SiteFooter({ showSeoTagline = false }: SiteFooterProps) {
               <span>Estate Sale Services</span>
             </div>
             <p>{footerDescription}</p>
+            <p className="footer-credential">
+              Bill Little, CAGA · Certified Personal Property Appraiser · USPAP-compliant · A
+              Little Unlimited Estate Sale Services LLC is licensed, insured, and bonded in the
+              State of Illinois.
+            </p>
             <div aria-label="Social media links" className="footer-social-links">
               {socialLinks.map((item) => (
                 <a href={item.href} key={item.href} rel="noreferrer" target="_blank">

@@ -17,6 +17,7 @@ export function SiteHeader() {
       <Link className="nav-logo" href="/" onClick={closeNav}>
         A Little Unlimited
         <span>Estate Sale Services</span>
+        <small>CAGA-credentialed · USPAP-compliant</small>
       </Link>
       <ul className={`nav-links${isOpen ? " nav-links-open" : ""}`}>
         {navigationItems.map((item) => {
@@ -57,4 +58,3 @@ export function SiteHeader() {
     </nav>
   );
 }
-

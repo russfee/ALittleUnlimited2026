@@ -21,10 +21,11 @@ export default function HomePage() {
               Not Just Effort
             </h1>
             <p className="hero-sub">
-              A Little Unlimited specializes in complex, collection-rich estates — designer and
-              antique furnishings, fine jewelry, rare coins, vintage couture, Chinese antiques, art
-              glass, and luxury collectibles. We bring professional knowledge to estates that
-              deserve more than a price tag.
+              A Little Unlimited specializes in complex, collection-rich estates — fine and
+              antique jewelry, gemstones, rare coins, antiques, art glass, art pottery, vintage
+              couture, designer furnishings, and the specialty collections that often define an
+              estate. Led by a CAGA-credentialed Certified Personal Property Appraiser, we bring
+              professional knowledge to estates that deserve more than a price tag.
             </p>
             <div className="hero-actions">
               <Link className="btn-primary" href="/professionals">
@@ -49,7 +50,9 @@ export default function HomePage() {
               require professional identification, market research, and domain expertise before a
               single item is priced. A Little Unlimited was built for exactly those estates.&quot;
             </blockquote>
-            <cite>— Bill, Founder &amp; Principal</cite>
+            <cite>
+              — Bill Little, CAGA · Founder &amp; Principal · Certified Personal Property Appraiser
+            </cite>
           </div>
         </div>
       </div>
@@ -122,6 +125,11 @@ export default function HomePage() {
               </p>
 
               <ul className="professionals-list">
+                <li>
+                  USPAP-compliant valuations performed by a CAGA-credentialed Certified Personal
+                  Property Appraiser — suitable for IRS Form 706, equitable distribution, and
+                  insurance scheduling
+                </li>
                 <li>Pre-sale inventory consultation and categorization by value tier</li>
                 <li>Market-informed pricing using current auction data and dealer comparables</li>
                 <li>Full post-sale settlement accounting suitable for estate records</li>

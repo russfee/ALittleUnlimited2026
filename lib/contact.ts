@@ -9,6 +9,7 @@ export type ContactSubmission = {
   name: string;
   phone?: string;
   role?: string;
+  specialtyDetails?: string;
 };
 
 const allowedCategories = new Set(contactCategoryOptions.map((option) => option.value));
@@ -27,6 +28,7 @@ export function validateContactSubmission(
   const role = input.role?.trim();
   const location = input.location?.trim();
   const message = input.message?.trim();
+  const specialtyDetails = input.specialtyDetails?.trim();
   const categories = Array.isArray(input.categories)
     ? input.categories.filter((value) => allowedCategories.has(value))
     : [];
@@ -56,9 +58,9 @@ export function validateContactSubmission(
       role,
       location,
       message,
+      specialtyDetails,
       categories,
       company: "",
     },
   };
 }
-

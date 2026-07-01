@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/contact-form";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { buildMetadata } from "@/lib/metadata";
-import { businessEmail } from "@/lib/site-data";
+import { billEmail, billPhone, businessEmail } from "@/lib/site-data";
 
 export const metadata = buildMetadata("contact");
 
@@ -10,13 +10,17 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        description="An initial consultation is always confidential and carries no obligation. We will tell you honestly whether the estate is one we can serve well."
+        description="An initial consultation is always confidential and carries no obligation. As a CAGA-credentialed Certified Personal Property Appraiser, Bill will tell you honestly whether the estate is one we can serve well — and what documentation, valuation, and routing approach would best serve it."
         eyebrow="Begin the Conversation"
         title={
           <>
             If Your Estate Requires
             <br />
-            Expertise, We&apos;d Like to Know
+            Expertise,
+            <span className="mobile-title-break">
+              <br />
+            </span>{" "}
+            We&apos;d Like to Know
           </>
         }
       />
@@ -28,10 +32,15 @@ export default function ContactPage() {
               <span className="eyebrow">Direct Contact</span>
               <div className="rule" />
               <h3>
-                Bill Little
+                Bill Little, CAGA
                 <br />
-                Founder &amp; Principal
+                Founder &amp; Principal · Certified Personal Property Appraiser
               </h3>
+              <p className="contact-credential-copy">
+                Certified Personal Property Appraiser through the Certified Appraisers Guild of
+                America · USPAP-compliant valuations suitable for estate records, IRS Form 706,
+                equitable distribution, and insurance scheduling.
+              </p>
               <p style={{ color: "var(--slate)", marginTop: 16, fontSize: "0.9rem", lineHeight: 1.8 }}>
                 The best way to start is a direct email. Describe the estate briefly — the
                 location, the categories you believe are present, and the timeline you are working
@@ -39,7 +48,21 @@ export default function ContactPage() {
               </p>
 
               <div className="contact-detail" style={{ marginTop: 40 }}>
-                <span className="label">Email</span>
+                <span className="label">Direct Email</span>
+                <span className="value">
+                  <a href={`mailto:${billEmail}`}>{billEmail}</a>
+                </span>
+              </div>
+
+              <div className="contact-detail">
+                <span className="label">Direct Phone</span>
+                <span className="value">
+                  <a href={`tel:${billPhone.replace(/[^+\d]/g, "")}`}>{billPhone}</a>
+                </span>
+              </div>
+
+              <div className="contact-detail">
+                <span className="label">General Email</span>
                 <span className="value">
                   <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
                 </span>

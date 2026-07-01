@@ -36,6 +36,7 @@ body {
   line-height: 1.75;
   color: var(--charcoal);
   background: var(--off-white);
+  overflow-x: hidden;
 }
 
 img {
@@ -161,6 +162,18 @@ section {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold);
+}
+
+.nav-logo small {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.56rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
 }
 
 .nav-links {
@@ -758,6 +771,12 @@ section {
   max-width: 280px;
 }
 
+.footer-brand .footer-credential {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.78rem;
+}
+
 .footer-social-links {
   display: flex;
   flex-wrap: wrap;
@@ -852,6 +871,10 @@ section {
   margin-top: 16px;
 }
 
+.mobile-title-break {
+  display: none;
+}
+
 .body-copy {
   color: var(--slate);
   font-size: 0.95rem;
@@ -863,13 +886,16 @@ section {
 }
 
 .bill-bio-content {
-  max-width: 860px;
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 56px;
+  align-items: start;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 .bill-bio-photo {
   border: 1px solid rgba(184, 153, 44, 0.18);
-  margin-bottom: 40px;
   overflow: hidden;
 }
 
@@ -877,6 +903,30 @@ section {
   display: block;
   height: auto;
   width: 100%;
+}
+
+.credential-callout {
+  padding: 28px;
+  background: var(--charcoal);
+  color: rgba(255, 255, 255, 0.74);
+  border-top: 1px solid rgba(184, 153, 44, 0.35);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.credential-callout strong,
+.credential-callout span {
+  display: block;
+}
+
+.credential-callout strong {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
 
 .centered-copy {
@@ -984,6 +1034,54 @@ section {
   background: var(--white);
 }
 
+.standards-section {
+  background: var(--off-white);
+  padding: 80px 0;
+}
+
+.standards-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+  gap: 72px;
+  align-items: start;
+}
+
+.standards-list {
+  list-style: none;
+  margin: 18px 0 28px;
+}
+
+.standards-list li {
+  border-bottom: 1px solid rgba(184, 153, 44, 0.12);
+  color: var(--slate);
+  font-size: 0.9rem;
+  padding: 10px 0 10px 20px;
+  position: relative;
+}
+
+.standards-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.specialties-credential {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 56px 0 16px;
+}
+
+.specialties-credential p {
+  border-left: 2px solid var(--gold);
+  color: var(--mid);
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.75;
+  padding-left: 32px;
+}
+
 .credential-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1077,6 +1175,15 @@ section {
 .contact-info h3 {
   font-size: 1.4rem;
   margin-bottom: 20px;
+}
+
+.contact-credential-copy {
+  border-left: 2px solid var(--gold);
+  color: var(--mid) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.75 !important;
+  margin-top: 12px !important;
+  padding-left: 20px;
 }
 
 .contact-info p {
@@ -1612,6 +1719,10 @@ section {
     font-size: 0.68rem;
   }
 
+  .nav-logo small {
+    font-size: 0.52rem;
+  }
+
   .nav-links-open {
     display: flex;
   }
@@ -1625,7 +1736,9 @@ section {
   .professionals-contact-grid,
   .portfolio-intro-inner,
   .about-two-column,
+  .bill-bio-content,
   .contact-grid,
+  .standards-grid,
   .sale-description {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -1681,6 +1794,24 @@ section {
 }
 
 @media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    overflow-wrap: break-word;
+  }
+
+  .mobile-title-break {
+    display: inline;
+  }
+
+  .page-hero h1 {
+    max-width: 100%;
+  }
+
+  .page-hero p,
+  .hero-sub {
+    max-width: 100%;
+  }
+
   .process-steps,
   .expertise-grid,
   .footer-grid,

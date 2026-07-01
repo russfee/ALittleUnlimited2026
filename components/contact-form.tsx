@@ -13,6 +13,7 @@ type ContactFormState = {
   name: string;
   phone: string;
   role: string;
+  specialtyDetails: string;
 };
 
 const initialState: ContactFormState = {
@@ -22,6 +23,7 @@ const initialState: ContactFormState = {
   role: "",
   location: "",
   categories: [],
+  specialtyDetails: "",
   message: "",
   company: "",
 };
@@ -170,6 +172,18 @@ export function ContactForm() {
           value={form.message}
         />
       </div>
+      <div className="form-group">
+        <label htmlFor="specialtyDetails">Specialty Collection Details (optional)</label>
+        <textarea
+          id="specialtyDetails"
+          name="specialtyDetails"
+          onChange={(event) =>
+            setForm((current) => ({ ...current, specialtyDetails: event.target.value }))
+          }
+          placeholder="Fountain pens, militaria, cameras, Native American pottery, stamps, sports memorabilia, or any collection assembled with care."
+          value={form.specialtyDetails}
+        />
+      </div>
       <div className="contact-honeypot">
         <label htmlFor="company">Company</label>
         <input
@@ -212,4 +226,3 @@ export function ContactForm() {
     </form>
   );
 }
-

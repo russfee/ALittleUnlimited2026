@@ -11,7 +11,7 @@ export default function SpecialtiesPage() {
   return (
     <>
       <PageHero
-        description="Eight categories requiring genuine expertise — not clipboard pricing. Each one handled with the knowledge the estate deserves."
+        description="Categories of deep expertise, anchored by formal credentialing as a CAGA-certified Personal Property Appraiser — not clipboard pricing. Each category handled with the research and market knowledge the estate deserves."
         eyebrow="Deep Category Knowledge"
         title={
           <>
@@ -24,6 +24,16 @@ export default function SpecialtiesPage() {
 
       <div style={{ background: "var(--off-white)" }}>
         <div className="container">
+          <div className="specialties-credential">
+            <p>
+              Every category below is approached the same way — research first, attribution before
+              pricing, and market data informing every valuation decision. As a CAGA-credentialed
+              Certified Personal Property Appraiser through the Certified Appraisers Guild of
+              America, Bill applies USPAP-compliant methodology to the estate&apos;s significant
+              categories — producing documentation suitable for IRS Form 706, equitable
+              distribution, insurance scheduling, and estate records.
+            </p>
+          </div>
           {specialties.map((specialty) => (
             <div className="specialty-section" id={specialty.id} key={specialty.id}>
               <div className="specialty-inner">
@@ -68,4 +78,3 @@ export default function SpecialtiesPage() {
     </>
   );
 }
-

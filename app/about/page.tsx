@@ -28,15 +28,18 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-two-column">
             <div>
-              <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
+              <span className="eyebrow">
+                Bill Little, CAGA · Founder &amp; Principal · Certified Personal Property Appraiser
+              </span>
               <div className="rule" />
               <h2>A Specialty Practice, By Design</h2>
               <p className="body-copy body-copy-spaced">
                 I founded A Little Unlimited to specialize in the estates that require genuine
-                expertise — collections of antique and fine jewelry, rare coins, vintage couture,
-                Chinese antiques, art glass, and luxury collectibles. I work closely with
-                attorneys, trust officers, and fiduciaries who need a vendor they can trust with
-                complex and high-value estates.
+                expertise — fine and antique jewelry, gemstones, rare coins, antiques, art glass,
+                art pottery, vintage couture, designer furnishings, and the specialty collections
+                that often define an estate. As a CAGA-credentialed Certified Personal Property
+                Appraiser, I work closely with attorneys, trust officers, and fiduciaries who need a
+                vendor they can trust with complex and high-value estates.
               </p>
               <p className="body-copy">
                 The general estate sale market is well-served by general estate sale companies. What
@@ -58,9 +61,19 @@ export default function AboutPage() {
                   <li>Gemstones — GIA gemological credentials in progress</li>
                   <li>Precious metals — melt analysis, maker identification</li>
                   <li>Rare coins &amp; numismatics — grading reference, lot structuring</li>
-                  <li>Chinese antiques — porcelain, jade, bronzes, hardwood furniture</li>
-                  <li>Art glass &amp; American pottery — Tiffany, Steuben, Rookwood</li>
+                  <li>Antiques — period identification, provenance research, current market valuation</li>
+                  <li>
+                    Chinese antiques &amp; Asian decorative arts — porcelain, jade, bronzes,
+                    hardwood furniture
+                  </li>
+                  <li>Art glass — Tiffany, Steuben, Lalique, Murano</li>
+                  <li>Art pottery — Rookwood, Weller, Roseville, Newcomb, Van Briggle</li>
                   <li>Vintage couture — designer identification, authentication</li>
+                  <li>
+                    Certified Personal Property Appraisal (CAGA, USPAP-compliant) —
+                    documentation suitable for IRS Form 706, equitable distribution, insurance
+                    scheduling, and charitable contribution purposes
+                  </li>
                 </ul>
               </div>
             </div>
@@ -79,9 +92,17 @@ export default function AboutPage() {
                 src="/images/bill-little-bio.jpg"
                 width={1200}
               />
+              <figcaption className="credential-callout">
+                <strong>Bill Little, CAGA</strong>
+                <span>Certified Personal Property Appraiser</span>
+                <span>Certified Appraisers Guild of America</span>
+                <span>USPAP-compliant valuations</span>
+              </figcaption>
             </figure>
             <div>
-              <span className="eyebrow">Bill Little · Founder &amp; Principal</span>
+              <span className="eyebrow">
+                Bill Little, CAGA · Founder &amp; Principal · Certified Personal Property Appraiser
+              </span>
               <div className="rule" />
               <h2>Bill&apos;s Bio</h2>
               <p className="body-copy body-copy-spaced">
@@ -122,8 +143,9 @@ export default function AboutPage() {
                 clients who hire us to sell their cherished belongings and to the customers who buy
                 them. We take great pride in the quality of our work and the success of every sale.
                 A Little Unlimited Estate Sales is licensed, insured, and bonded in the State of
-                Illinois, and I am a Certified Personal Property Appraiser through the Certified
-                Appraisers Guild of America.
+                Illinois. I am a Certified Personal Property Appraiser through the Certified
+                Appraisers Guild of America, and I apply USPAP-compliant methodology to significant
+                estate valuation work.
               </p>
             </div>
           </div>
@@ -156,9 +178,10 @@ export default function AboutPage() {
             <div className="about-value-card">
               <span className="eyebrow about-value-label">Expertise</span>
               <p className="about-value-copy">
-                Deep category knowledge across eight specialty areas — built through years of
-                hands-on research, market study, and professional credential pursuit. We bring the
-                knowledge; the estate provides the collection.
+                Deep category knowledge across specialty areas, anchored by formal credentialing as
+                a CAGA-certified Personal Property Appraiser. Built through years of hands-on
+                research, market study, and ongoing credential pursuit (GIA gemological credentials
+                currently in progress). We bring the knowledge; the estate provides the collection.
               </p>
             </div>
             <div className="about-value-card">

@@ -69,6 +69,8 @@ function renderHtml(data: ContactSubmission) {
     <p><strong>Categories:</strong> ${escapeHtml(categories)}</p>
     <p><strong>Message:</strong></p>
     <p>${escapeHtml(data.message).replace(/\n/g, "<br />")}</p>
+    <p><strong>Specialty collection details:</strong></p>
+    <p>${escapeHtml(data.specialtyDetails || "Not provided").replace(/\n/g, "<br />")}</p>
   `;
 }
 
@@ -86,6 +88,9 @@ function renderText(data: ContactSubmission) {
     "",
     "Message:",
     data.message,
+    "",
+    "Specialty collection details:",
+    data.specialtyDetails || "Not provided",
   ].join("\n");
 }
 

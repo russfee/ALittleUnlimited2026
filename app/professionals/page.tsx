@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { buildMetadata } from "@/lib/metadata";
-import { businessEmail } from "@/lib/site-data";
+import { billEmail, billPhone, businessEmail } from "@/lib/site-data";
 
 export const metadata = buildMetadata("professionals");
 
@@ -11,7 +11,7 @@ export default function ProfessionalsPage() {
   return (
     <>
       <PageHero
-        description="If you are a trust and estate attorney, bank trust officer, or fiduciary responsible for an estate with significant personal property, A Little Unlimited was built with you in mind."
+        description="If you are a trust and estate attorney, bank trust officer, or fiduciary responsible for an estate with significant personal property, A Little Unlimited was built with you in mind. Led by Bill Little, CAGA — a Certified Personal Property Appraiser through the Certified Appraisers Guild of America, USPAP-compliant — our practice provides defensible valuations and full settlement accounting suitable for estate tax filings (IRS Form 706), equitable distribution among heirs, insurance scheduling, and charitable contribution documentation."
         eyebrow="Trust & Estate Attorneys · Bank Fiduciaries · Wealth Managers"
         title={
           <>
@@ -91,6 +91,42 @@ export default function ProfessionalsPage() {
                 We serve families during some of the most sensitive transitions of their lives. Our
                 team operates with the same discretion you would expect of any professional working
                 in a fiduciary context. Client privacy is non-negotiable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="standards-section">
+        <div className="container">
+          <div className="standards-grid">
+            <div>
+              <span className="eyebrow">Credentialing &amp; Standards</span>
+              <div className="rule" />
+              <h2>Documentation Built for Professional Scrutiny</h2>
+            </div>
+            <div>
+              <p className="body-copy body-copy-spaced">
+                A Little Unlimited is led by Bill Little, a CAGA-credentialed Certified Personal
+                Property Appraiser through the Certified Appraisers Guild of America. All valuations
+                are performed in accordance with the Uniform Standards of Professional Appraisal
+                Practice (USPAP).
+              </p>
+              <p className="body-copy">
+                Documentation produced from our engagements is suitable for:
+              </p>
+              <ul className="standards-list">
+                <li>Estate tax filings (IRS Form 706)</li>
+                <li>Equitable distribution among heirs</li>
+                <li>Trust administration and probate filings</li>
+                <li>Insurance scheduling and replacement valuation</li>
+                <li>Charitable contribution documentation</li>
+                <li>Litigation and court-required appraisal</li>
+              </ul>
+              <p className="body-copy">
+                This level of documentation is unusual in the estate sale industry — and it is what
+                allows us to function as a peer professional to attorneys, fiduciaries, and CPAs
+                rather than as a typical vendor.
               </p>
             </div>
           </div>
@@ -184,11 +220,12 @@ export default function ProfessionalsPage() {
               means items don&apos;t sell and recovery is delayed.
             </p>
             <p className="body-copy">
-              We bring category expertise across fine and antique jewelry, rare coins, vintage
-              couture, Chinese antiques, art glass, and precious metals. Bill is pursuing GIA
-              gemological credentials and conducts his own market research using live auction data
-              and active dealer pricing. That expertise is not incidental to what we do — it is the
-              entire point.
+              We bring category expertise across fine and antique jewelry, gemstones, rare coins,
+              antiques, art glass, art pottery, vintage couture, designer furnishings, and the
+              specialty collections that often define an estate. Bill is a CAGA-credentialed
+              Certified Personal Property Appraiser, is pursuing GIA gemological credentials, and
+              conducts his own market research using live auction data and active dealer pricing.
+              That expertise is not incidental to what we do — it is the entire point.
             </p>
             <p className="body-copy">
               For a fiduciary, that difference is not abstract. It is the difference between a
@@ -224,7 +261,27 @@ export default function ProfessionalsPage() {
               </span>
               <div style={{ marginBottom: 28 }}>
                 <div className="contact-detail">
-                  <span className="label">Email</span>
+                  <span className="label">Direct Email</span>
+                  <span className="value" style={{ color: "var(--white)" }}>
+                    <a href={`mailto:${billEmail}`} style={{ color: "var(--white)" }}>
+                      {billEmail}
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <div className="contact-detail">
+                  <span className="label">Direct Phone</span>
+                  <span className="value" style={{ color: "var(--white)" }}>
+                    <a href={`tel:${billPhone.replace(/[^+\d]/g, "")}`} style={{ color: "var(--white)" }}>
+                      {billPhone}
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <div style={{ marginBottom: 28 }}>
+                <div className="contact-detail">
+                  <span className="label">General Email</span>
                   <span className="value" style={{ color: "var(--white)" }}>
                     <a href={`mailto:${businessEmail}`} style={{ color: "var(--white)" }}>
                       {businessEmail}

@@ -43,6 +43,8 @@ export type PortfolioSale = {
 
 export const siteUrl = "https://alittleunlimited.com";
 export const businessEmail = "info@alittleunlimited.com";
+export const billEmail = "Bill@ALittleUnlimited.com";
+export const billPhone = "(773) 771-2805";
 export const siteName = "A Little Unlimited Estate Sale Services";
 
 export const navigationItems: NavItem[] = [
@@ -55,9 +57,12 @@ export const navigationItems: NavItem[] = [
 export const footerSpecialties: NavItem[] = [
   { href: "/specialties#jewelry", label: "Fine Jewelry" },
   { href: "/specialties#coins", label: "Rare Coins" },
-  { href: "/specialties#couture", label: "Vintage Couture" },
-  { href: "/specialties#chinese", label: "Chinese Antiques" },
+  { href: "/specialties#antiques", label: "Antiques" },
   { href: "/specialties#artglass", label: "Art Glass" },
+  { href: "/specialties#pottery", label: "Art Pottery" },
+  { href: "/specialties#couture", label: "Vintage Couture" },
+  { href: "/specialties#furnishings", label: "Designer Furnishings" },
+  { href: "/specialties#collections", label: "Specialty Collections" },
 ];
 
 export const socialLinks: NavItem[] = [
@@ -70,33 +75,33 @@ export const metaPages: Record<string, MetaPage> = {
   about: {
     title: "About",
     description:
-      "Bill Little founded A Little Unlimited to specialize in complex, high-value estates in Chicago and the North Shore — estates with fine jewelry, rare coins, Chinese antiques, vintage couture, and art glass.",
+      "Bill Little founded A Little Unlimited to specialize in complex, high-value estates with fine and antique jewelry, gemstones, rare coins, antiques, art glass, art pottery, vintage couture, designer furnishings, and specialty collections — led by a CAGA-credentialed Certified Personal Property Appraiser.",
   },
   contact: {
     title: "Contact",
     description:
-      "Contact A Little Unlimited Estate Sale Services in Chicago. Specialists in complex, high-value estate sales for attorneys, fiduciaries, and families on the North Shore.",
+      "Contact Bill Little, CAGA — Certified Personal Property Appraiser and principal of A Little Unlimited Estate Sale Services in Chicago. Specialists in complex, high-value estates serving attorneys, fiduciaries, and families on the North Shore.",
   },
   home: {
     title:
       "A Little Unlimited Estate Sale Services — Chicago's Specialist in Complex, High-Value Estates",
     description:
-      "A Little Unlimited Estate Sale Services specializes in complex, high-value estate sales in Chicago and the North Shore. Fine jewelry, rare coins, vintage couture, Chinese antiques, art glass, and luxury collectibles.",
+      "A Little Unlimited Estate Sale Services specializes in complex, high-value estate sales in Chicago and the North Shore. Fine and antique jewelry, gemstones, rare coins, antiques, art glass, art pottery, vintage couture, designer furnishings, and specialty collections — led by a CAGA-credentialed Certified Personal Property Appraiser.",
   },
   portfolio: {
     title: "Past Sales",
     description:
-      "Notable estates and items handled by A Little Unlimited — fine jewelry, rare coins, Chinese antiques, vintage couture, art glass, and luxury collectibles. Chicago and North Shore specialist.",
+      "Notable estates and items handled by A Little Unlimited — fine and antique jewelry, gemstones, rare coins, antiques, art glass, art pottery, vintage couture, designer furnishings, and specialty collections. Chicago and North Shore specialist led by Bill Little, CAGA.",
   },
   professionals: {
     title: "For Attorneys & Fiduciaries",
     description:
-      "A specialized estate sale resource for trust and estate attorneys, bank trust officers, and fiduciaries in Chicago and the North Shore. Full settlement accounting, professional documentation, and discretion.",
+      "A specialized estate sale resource led by a CAGA-credentialed Certified Personal Property Appraiser, serving trust and estate attorneys, bank trust officers, and fiduciaries in Chicago and the North Shore. USPAP-compliant valuations, full settlement accounting, professional documentation, and discretion.",
   },
   specialties: {
     title: "Specialties",
     description:
-      "Deep expertise in fine jewelry, rare coins, vintage couture, Chinese antiques, art glass, precious metals, designer furnishings, and fine art. Chicago and North Shore estate sale specialists.",
+      "Deep expertise in fine and antique jewelry, gemstones, rare coins, antiques, art glass, art pottery, vintage couture, designer furnishings, and the specialty collections that often define an estate — led by a CAGA-credentialed Certified Personal Property Appraiser. Chicago and North Shore estate sale specialists.",
   },
 };
 
@@ -112,7 +117,7 @@ export const homepageExpertise = [
   {
     title: "Fine & Antique Jewelry",
     description:
-      "Signed pieces, Georgian, Victorian, Art Deco, mid-century modern. Research-based pricing using current auction records and dealer data. GIA gemological credentials in progress.",
+      "All valuations performed by a CAGA-credentialed Certified Personal Property Appraiser. Signed pieces, Georgian, Victorian, Art Deco, mid-century modern. Research-based pricing using current auction records and dealer data. GIA gemological credentials in progress.",
   },
   {
     title: "Rare Coins & Numismatics",
@@ -125,9 +130,14 @@ export const homepageExpertise = [
       "Chanel, Balenciaga, Halston, Pucci, and beyond. Authentication, condition expertise, and access to the buyer networks these pieces deserve.",
   },
   {
-    title: "Art Glass & American Pottery",
+    title: "Art Glass",
     description:
-      "Tiffany Studios, Steuben, Rookwood, Weller, majolica, Arts & Crafts, mid-century studio. Proper attribution before pricing — always.",
+      "Tiffany Studios, Steuben, Lalique, Murano, and mid-century studio glass. Proper attribution before pricing — always.",
+  },
+  {
+    title: "Art Pottery",
+    description:
+      "Rookwood, Weller, Roseville, Newcomb, Van Briggle, Grueby, majolica, and mid-century studio pottery. A distinct collector market handled with care.",
   },
   {
     title: "Precious Metals",
@@ -135,7 +145,7 @@ export const homepageExpertise = [
       "Melt value analysis, maker identification, sterling versus silver-plate, gold alloy assessment. Accuracy that protects families and estate records.",
   },
   {
-    title: "Chinese Antiques",
+    title: "Chinese Antiques & Asian Decorative Arts",
     description:
       "Porcelain, jade carvings, bronzes, lacquerware, hardwood furniture. Dynasty identification, attribution research, and current collector market valuation.",
   },
@@ -213,8 +223,9 @@ export const specialties: Specialty[] = [
     number: "01",
     title: "Fine & Antique Jewelry",
     intro:
-      "From signed Cartier and Van Cleef to Georgian mourning jewelry and Art Deco platinum, fine jewelry requires a level of expertise that general estate sale companies rarely bring.",
+      "All jewelry valuations are performed by a CAGA-credentialed Certified Personal Property Appraiser using current auction comparables and live spot pricing for precious metals.",
     description: [
+      "From signed Cartier and Van Cleef to Georgian mourning jewelry and Art Deco platinum, fine jewelry requires a level of expertise that general estate sale companies rarely bring.",
       "A signed piece from a notable maker and an unsigned piece of similar appearance can differ by thousands of dollars in value. Period attribution matters. Metal content matters. Stone quality, cutting style, and hallmarks all matter. We research maker, period, condition, and current market before pricing anything — using live auction comparables and active dealer data, not price guides from three years ago.",
       "Bill is actively pursuing GIA gemological credentials. Gemstone identification, grading assessment, and market pricing are conducted with reference to current professional standards.",
     ],
@@ -247,8 +258,44 @@ export const specialties: Specialty[] = [
     ],
   },
   {
-    id: "couture",
+    id: "antiques",
     number: "03",
+    title: "Antiques",
+    intro:
+      "American, English, and Continental period antiques — furniture, decorative arts, folk art, and the longstanding collections that often anchor an estate.",
+    description: [
+      "We identify period, attribute makers, research provenance, and price using current market data before recommending the right sales path for the estate.",
+    ],
+    bullets: [
+      "American period furniture: Federal, Empire, Eastlake, Mission, Arts & Crafts",
+      "English and Continental antiques: Georgian, Victorian, Louis XV/XVI, Biedermeier",
+      "Folk art and primitives: regional attribution and provenance research",
+      "Scientific instruments, barometers, automata, music boxes",
+      "Early American glass, transferware, pressed glass, flow blue",
+      "Clocks, watches, and horological collections",
+    ],
+  },
+  {
+    id: "chinese",
+    number: "04",
+    title: "Chinese Antiques & Asian Decorative Arts",
+    intro:
+      "Porcelain, jade carvings, bronzes, lacquerware, hardwood furniture, and Asian decorative arts require period identification, attribution research, and an understanding of current collector market dynamics.",
+    description: [
+      "Chinese antiques are among the most technically demanding categories in estate sales. Period attribution — distinguishing a Ming period piece from a later reproduction, or identifying the dynasty of a porcelain form — requires specialized knowledge that most estate sale companies do not possess. We bring that knowledge, along with an understanding of the current global collector market for Chinese and Asian works of art.",
+    ],
+    bullets: [
+      "Porcelain: period identification, reign mark research, glaze and form attribution",
+      "Jade: nephrite versus jadeite, carving period, quality assessment",
+      "Bronzes: vessel forms, casting period, patina assessment",
+      "Lacquerware: dynasty attribution, technique identification",
+      "Hardwood furniture: period, regional style, construction method",
+      "Snuff bottles, scholar's objects, and decorative arts",
+    ],
+  },
+  {
+    id: "couture",
+    number: "05",
     title: "Vintage Couture & Designer Apparel",
     intro:
       "Chanel, Balenciaga, Halston, Pucci — vintage couture demands authentication, condition expertise, and access to the right buyer network. It deserves more than a rack and a price tag.",
@@ -265,44 +312,42 @@ export const specialties: Specialty[] = [
     ],
   },
   {
-    id: "chinese",
-    number: "04",
-    title: "Chinese Antiques",
-    intro:
-      "Porcelain, jade carvings, bronzes, lacquerware, and hardwood furniture require dynasty identification, attribution research, and an understanding of current collector market dynamics.",
-    description: [
-      "Chinese antiques are among the most technically demanding categories in estate sales. Period attribution — distinguishing a Ming period piece from a later reproduction, or identifying the dynasty of a porcelain form — requires specialized knowledge that most estate sale companies do not possess. We bring that knowledge, along with an understanding of the current global collector market for Chinese works of art.",
-    ],
-    bullets: [
-      "Porcelain: period identification, reign mark research, glaze and form attribution",
-      "Jade: nephrite versus jadeite, carving period, quality assessment",
-      "Bronzes: vessel forms, casting period, patina assessment",
-      "Lacquerware: dynasty attribution, technique identification",
-      "Hardwood furniture: period, regional style, construction method",
-      "Snuff bottles, scholar's objects, and decorative arts",
-    ],
-  },
-  {
     id: "artglass",
-    number: "05",
-    title: "Art Glass & American Pottery",
+    number: "06",
+    title: "Art Glass",
     intro:
-      "Tiffany Studios, Steuben, Rookwood, Weller, majolica — the art glass and American pottery market rewards proper attribution. We identify before we price.",
+      "Tiffany Studios, Steuben, Lalique, Murano — the art glass market rewards proper attribution.",
     description: [
-      "The difference between a properly attributed Tiffany Studios lamp and an unsigned contemporary piece is not a matter of degree — it is an entirely different market. We identify makers, periods, and condition grades before any pricing occurs, and connect significant pieces with serious collectors and dealers who understand their value.",
+      "We identify maker, period, and condition grade before pricing, and connect significant pieces with serious collectors and dealers.",
     ],
     bullets: [
       "Tiffany Studios: lamp bases, shades, metalwork, and favrile glass",
-      "Steuben, Carder-era attribution and form identification",
-      "Rookwood, Weller, Roseville, and Ohio pottery attribution",
+      "Steuben: Carder-era attribution and form identification",
+      "Lalique, Daum, Gallé: French art glass identification and attribution",
+      "Murano: studio identification and period assessment",
+      "American art glass: Quezal, Durand, Kew Blas",
+      "Mid-century and contemporary studio glass",
+    ],
+  },
+  {
+    id: "pottery",
+    number: "07",
+    title: "Art Pottery",
+    intro:
+      "Rookwood, Weller, Roseville, Newcomb, Van Briggle, Grueby — American and European art pottery is a distinct collector market that rewards careful attribution.",
+    description: ["We identify artist marks, glaze periods, and forms before pricing."],
+    bullets: [
+      "Rookwood: artist marks, glaze periods, form identification",
+      "Ohio art pottery: Weller, Roseville, Owens, McCoy",
+      "Arts & Crafts pottery: Newcomb, Van Briggle, Grueby, Marblehead, Teco",
       "Majolica: maker identification, period, and condition",
-      "Arts & Crafts period pottery and decorative arts",
-      "Mid-century studio glass and art pottery",
+      "Mid-century studio pottery: Natzler, Voulkos, regional studio",
+      "European pottery: Rörstrand, Meissen, Royal Doulton, Wedgwood",
     ],
   },
   {
     id: "metals",
-    number: "06",
+    number: "08",
     title: "Precious Metals",
     intro:
       "Sterling versus silver-plate. Gold alloy identification. Maker marks and hallmarks. Melt value versus collector value. Accuracy here protects families and estate records.",
@@ -320,7 +365,7 @@ export const specialties: Specialty[] = [
   },
   {
     id: "art",
-    number: "07",
+    number: "09",
     title: "Fine Art & Works on Paper",
     intro:
       "Artist identification, signature verification, market research, and auction referral when appropriate. Your estate's art handled with the gravity it deserves.",
@@ -338,7 +383,7 @@ export const specialties: Specialty[] = [
   },
   {
     id: "furnishings",
-    number: "08",
+    number: "10",
     title: "Designer & Antique Furnishings",
     intro:
       "Provenance research, period identification, and high-end resale routing. Not every fine piece belongs in a weekend sale — we know the difference.",
@@ -354,13 +399,31 @@ export const specialties: Specialty[] = [
       "Dealer and auction routing for high-value pieces",
     ],
   },
+  {
+    id: "collections",
+    number: "11",
+    title: "Specialty Collections",
+    intro:
+      "The specialty collections that often define an estate — assembled over decades, sometimes overlooked by general estate sale companies, and frequently the highest-value component of what we are asked to handle.",
+    description: ["We research, attribute, and route significant collections in virtually any field."],
+    bullets: [
+      "Numismatic collections beyond U.S. coinage: world coins, ancients, paper currency, medals",
+      "Philatelic collections: U.S. and worldwide stamps, postal history, first-day covers",
+      "Militaria: edged weapons, medals, uniforms, insignia, ephemera",
+      "Vintage fountain pens: Parker, Sheaffer, Waterman, Montblanc, Pelikan",
+      "Vintage cameras and photographic equipment",
+      "Native American and tribal art: pottery, baskets, weavings, beadwork",
+      "Sports memorabilia, advertising, and Americana",
+      "Whatever category was assembled with care — we welcome the conversation",
+    ],
+  },
 ];
 
 export const portfolioFilters = [
   { value: "all", label: "All Estates" },
   { value: "jewelry", label: "Fine Jewelry" },
   { value: "coins", label: "Rare Coins" },
-  { value: "chinese", label: "Chinese Antiques" },
+  { value: "chinese", label: "Chinese & Asian Decorative Arts" },
   { value: "couture", label: "Couture" },
   { value: "artglass", label: "Art Glass" },
   { value: "furnishings", label: "Furnishings" },
@@ -388,7 +451,7 @@ export const portfolioSales: PortfolioSale[] = [
       {
         kind: "image",
         heightClass: "medium",
-        category: "Chinese Antiques & Coins",
+        category: "Chinese & Asian Decorative Arts",
         caption: "Chinese porcelain collection — dynasty-identified prior to pricing",
         src: "https://alittleunlimited.com/wp-content/uploads/2024/11/2024-10-21_ChinesePorcelainCoins.jpg",
         alt: "Chinese porcelain and coins",
@@ -405,7 +468,12 @@ export const portfolioSales: PortfolioSale[] = [
       { label: "Location", value: "Glenview, IL" },
       {
         label: "Categories",
-        pills: ["Fine Jewelry", "Rare Coins", "Chinese Antiques", "Precious Metals"],
+        pills: [
+          "Fine Jewelry",
+          "Rare Coins",
+          "Chinese & Asian Decorative Arts",
+          "Precious Metals",
+        ],
       },
       {
         label: "Notable",
@@ -528,6 +596,8 @@ export const contactRoleOptions = [
   "Trust & Estate Attorney",
   "Bank Trust Officer",
   "Wealth Manager / Financial Advisor",
+  "CPA / Tax Professional",
+  "Senior Move Manager",
   "Real Estate Professional",
   "Estate Appraiser",
   "Family Member / Personal Representative",
@@ -535,12 +605,16 @@ export const contactRoleOptions = [
 ];
 
 export const contactCategoryOptions = [
-  { label: "Fine Jewelry", value: "jewelry" },
-  { label: "Rare Coins", value: "coins" },
+  { label: "Fine & Antique Jewelry", value: "jewelry" },
+  { label: "Gemstones (loose or set)", value: "gemstones" },
+  { label: "Rare Coins & Numismatics", value: "coins" },
+  { label: "Antiques (American, English, Continental)", value: "antiques" },
+  { label: "Chinese Antiques & Asian Decorative Arts", value: "chinese" },
+  { label: "Art Glass (Tiffany, Steuben, Lalique, Murano, etc.)", value: "artglass" },
+  { label: "Art Pottery (Rookwood, Weller, Roseville, etc.)", value: "pottery" },
   { label: "Vintage Couture", value: "couture" },
-  { label: "Chinese Antiques", value: "chinese" },
-  { label: "Art Glass / Pottery", value: "artglass" },
-  { label: "Fine Art", value: "art" },
-  { label: "Precious Metals", value: "metals" },
-  { label: "Fine Furnishings", value: "furnishings" },
+  { label: "Fine Art & Works on Paper", value: "art" },
+  { label: "Precious Metals (silver, gold, platinum)", value: "metals" },
+  { label: "Designer & Antique Furnishings", value: "furnishings" },
+  { label: "Specialty Collections (please describe below)", value: "collections" },
 ];
