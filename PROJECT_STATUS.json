@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "name": "A Little Unlimited",
+  "shortName": "A Little",
+  "summary": "Production appraisal and estate-services website for Bill Little.",
+  "phase": "Live & refining",
+  "health": "attention",
+  "lastUpdated": "2026-07-12",
+  "currentFocus": "CAGA credential and service-positioning updates are live and need a final review.",
+  "latestUpdate": "Threaded updated CAGA credentials, trust language, and contact details throughout the site.",
+  "waitingOn": {
+    "party": "me",
+    "items": [
+      "Review the live credential copy",
+      "Exercise the contact and mailing-list flows"
+    ]
+  },
+  "nextActions": [
+    "Complete a production content pass",
+    "Capture any client follow-up as a concrete next step"
+  ],
+  "risks": [
+    "This repo did not previously have a maintained handoff brief"
+  ],
+  "liveUrl": "https://a-little-unlimited2026.vercel.app"
+}
